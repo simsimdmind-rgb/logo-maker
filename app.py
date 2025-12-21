@@ -16,7 +16,7 @@ st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 
 # 2. 제목 및 설명
 st.title("🎨 로고 제작 프롬프트 자동 생성기")
-st.write("복잡한 영어 공부 없이, 클릭 몇 번으로 미드저니 전문가급 프롬프트를 만들어보세요.")
+st.write("의뢰 내용만 한글로 입력하세요. 미드저니용 고퀄리티 영어 프롬프트를 자동으로 만들어드립니다.")
 st.markdown("---")
 
 # 3. [STEP 1] 스타일 선택 (메인 화면 버튼식)
@@ -43,7 +43,7 @@ st.subheader("2. 의뢰 내용을 입력하세요")
 user_input = st.text_area(
     "브랜드명, 업종, 넣고 싶은 이미지 등을 한글로 적어주세요.", 
     height=150,
-    placeholder="예시: '프비연'이라는 AI 교육 브랜드야. 로봇과 연필이 결합된 심플한 이미지를 원해."
+    placeholder="예시: 'ㅇㅁㄹㅁㄹㅁㄹㅇㅁㄹ"
 )
 
 # 5. 생성 버튼 및 로직
