@@ -10,10 +10,7 @@ st.markdown("---")
 st.write("의뢰 내용만 한글로 입력하세요. 미드저니용 고퀄리티 영어 프롬프트를 자동으로 만들어드립니다.")
 
 # 3. 사이드바 (API 키 입력 및 설정)
-with st.sidebar:
-    st.header("⚙️ 설정")
-    # 실제 배포시에는 이 부분을 숨기는 방법이 있지만, 일단 테스트를 위해 입력창을 둡니다.
-    api_key = st.text_input("Google API Key를 입력하세요", type="password")
+api_key = st.secrets["AIzaSyDRViC_AgyLUMYXMart4RUFXNRauyKpEK4"]
     
     st.markdown("---")
     st.subheader("로고 스타일 선택")
@@ -31,8 +28,8 @@ user_input = st.text_area("의뢰 내용 (예: 따뜻한 느낌의 뜨개질 공
 
 # 5. 생성 버튼 및 로직
 if st.button("✨ 프롬프트 생성하기", type="primary"):
-    if not api_key:
-        st.error("왼쪽 사이드바에 API Key를 먼저 입력해주세요!")
+    if not user_input:
+        st.warning("의뢰 내용을 입력해주세요.")
     elif not user_input:
         st.warning("의뢰 내용을 입력해주세요.")
     else:
