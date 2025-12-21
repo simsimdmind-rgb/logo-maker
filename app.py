@@ -15,7 +15,7 @@ hide_decoration_bar_style = '''
 st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 
 # 2. 제목 및 설명
-st.title("🎨 AI 로고 디자인 프롬프트 생성기")
+st.title("🎨 로고 제작 프롬프트 자동 생성기")
 st.markdown("---")
 st.write("의뢰 내용만 한글로 입력하세요. 미드저니용 고퀄리티 영어 프롬프트를 자동으로 만들어드립니다.")
 
