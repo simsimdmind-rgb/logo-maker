@@ -3,6 +3,12 @@ import google.generativeai as genai
 
 # 1. 페이지 설정
 st.set_page_config(page_title="AI 로고 프롬프트 생성기", page_icon="🎨")
+hide_decoration_bar_style = '''
+    <style>
+        header {visibility: hidden;}
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+    </style>
 
 # 2. 제목 및 설명
 st.title("🎨 AI 로고 디자인 프롬프트 생성기")
