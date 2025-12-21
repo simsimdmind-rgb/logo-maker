@@ -61,8 +61,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
         st.warning("✌️ '의뢰 내용'을 입력해주세요!")
     else:
         try:
-            # Secrets에서 키를 가져옴
-            genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+            genai.configure(api_key="sk-AIzaSyCkb8Yjk-5U8o6QKFulFkY6fNUGBxJQwqw")
             model = genai.GenerativeModel('gemini-2.5-flash')
             
             # ---------------------------------------------------------
