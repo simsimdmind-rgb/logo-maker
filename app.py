@@ -62,7 +62,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
     else:
         try:
             genai.configure(api_key="sk-AIzaSyCkb8Yjk-5U8o6QKFulFkY6fNUGBxJQwqw")
-            model = genai.GenerativeModel('gemini-2.5-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash')
             
             # ---------------------------------------------------------
             # [핵심] 대표님의 프롬프트 공식 (System Prompt 설계)
