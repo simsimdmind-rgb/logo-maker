@@ -1,14 +1,18 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 1. 페이지 설정
+# 1. 페이지 설정 (가장 먼저 와야 함)
 st.set_page_config(page_title="AI 로고 프롬프트 생성기", page_icon="🎨")
+
+# [여기 추가됨] 상단 배너(Fork 등), 메뉴, 푸터 숨기기
 hide_decoration_bar_style = '''
     <style>
         header {visibility: hidden;}
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
     </style>
+'''
+st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 
 # 2. 제목 및 설명
 st.title("🎨 AI 로고 디자인 프롬프트 생성기")
@@ -36,10 +40,10 @@ if st.button("✨ 프롬프트 생성하기", type="primary"):
         st.warning("의뢰 내용을 입력해주세요.")
     else:
         try:
-            # Secrets에서 키를 가져옴 (수강생은 모름)
+            # Secrets에서 키를 가져옴
             genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
             
-            # 아까 성공했던 최신 모델명 적용
+            # 모델 설정 (가장 최신)
             model = genai.GenerativeModel('gemini-2.5-flash') 
             
             system_prompt = f"""
@@ -67,6 +71,6 @@ if st.button("✨ 프롬프트 생성하기", type="primary"):
         except Exception as e:
             st.error(f"에러가 발생했습니다: {e}")
 
-# 6. 하단 푸터
+# 6. 하단 푸터 (수동으로 넣은 제작자 표시는 남겨둠)
 st.markdown("---")
-st.caption("Created by 프비연 | Powered by Google Gemini")
+st.caption("Created by 프비연")
