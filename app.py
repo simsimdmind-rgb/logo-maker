@@ -1,7 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 1. 페이지 설정 (탭 이름, 아이콘)
+# 1. 페이지 설정
 st.set_page_config(page_title="AI 로고 프롬프트 생성기", page_icon="🎨")
 
 # 2. 제목 및 설명
@@ -9,11 +9,9 @@ st.title("🎨 AI 로고 디자인 프롬프트 생성기")
 st.markdown("---")
 st.write("의뢰 내용만 한글로 입력하세요. 미드저니용 고퀄리티 영어 프롬프트를 자동으로 만들어드립니다.")
 
-# 3. 사이드바 (API 키 입력 및 설정)
-api_key = st.secrets["AIzaSyDRViC_AgyLUMYXMart4RUFXNRauyKpEK4"]
-    
-    st.markdown("---")
-    st.subheader("로고 스타일 선택")
+# 3. 사이드바 (스타일 선택)
+with st.sidebar:
+    st.header("⚙️ 스타일 설정")
     style_option = st.selectbox(
         "원하는 스타일을 골라주세요",
         ("심플/미니멀 (Apple, Nike 스타일)", 
@@ -30,15 +28,14 @@ user_input = st.text_area("의뢰 내용 (예: 따뜻한 느낌의 뜨개질 공
 if st.button("✨ 프롬프트 생성하기", type="primary"):
     if not user_input:
         st.warning("의뢰 내용을 입력해주세요.")
-    elif not user_input:
-        st.warning("의뢰 내용을 입력해주세요.")
     else:
-        # AI 설정 및 호출
         try:
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-2.5-flash')
+            # Secrets에서 키를 가져옴 (수강생은 모름)
+            genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
             
-            # 여기가 바로 '시스템 프롬프트' (AI에게 역할을 부여하는 곳)
+            # 아까 성공했던 최신 모델명 적용
+            model = genai.GenerativeModel('gemini-2.5-flash') 
+            
             system_prompt = f"""
             너는 미드저니(Midjourney) 로고 프롬프트 전문 엔지니어다.
             사용자의 요청을 바탕으로 최고의 로고를 뽑을 수 있는 영문 프롬프트를 작성해라.
@@ -59,11 +56,11 @@ if st.button("✨ 프롬프트 생성하기", type="primary"):
                 final_prompt = response.text
                 
             st.success("생성 완료! 아래 내용을 복사해서 미드저니에 붙여넣으세요.")
-            st.code(final_prompt, language="bash") # 복사 버튼이 자동으로 생깁니다.
+            st.code(final_prompt, language="bash")
             
         except Exception as e:
             st.error(f"에러가 발생했습니다: {e}")
 
 # 6. 하단 푸터
 st.markdown("---")
-st.caption("Created by 심심코치 | Powered by Google Gemini")
+st.caption("Created by 프비연 | Powered by Google Gemini")
