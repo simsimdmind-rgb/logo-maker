@@ -47,7 +47,7 @@ elif style_key == "텍스트 형태 (이니셜 강조)":
     placeholder_text = "예시: 알파벳 'M'으로 심플하게 만들어줘."
 
 user_input = st.text_area(
-    "브랜드명, 업종, 넣고 싶은 이미지 등을 한글로 적어주세요.", 
+    "의뢰 내용만 한글로 입력하세요. 미드저니용 고퀄리티 영어 프롬프트를 자동으로 만들어드립니다.", 
     height=150,
     placeholder=placeholder_text
 )
