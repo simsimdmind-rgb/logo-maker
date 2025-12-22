@@ -150,7 +150,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
                      final_prompt = "/imagine prompt: " + final_prompt
 
             # 6. 결과 출력
-            st.success("🎉 생성 완료! 아래 코드를 복사해서 사용하세요.")
+            st.success("🎉 생성 완료! 아래 프롬프트를 복사해서 사용하세요.")
             st.code(final_prompt, language="bash")
             
         except Exception as e:
