@@ -96,7 +96,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
 
             elif style_key == "캐릭터/마스코트 (레트로 라인아트)":
                 instructions = f"""
-                [공식]: Minimal retro mascot logo of a [Subject] [Action], [Props/Details], [Expression]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography --v 6.0
+                [공식]: Minimal retro mascot logo of cartoon [Subject] [Action], [Props/Details], [Expression]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography --v 6.0
                 [미션]: 사용자의 입력에서 대상(Subject), 동작(Action), 소품(Props), 표정(Expression)을 추출해 영어로 번역하고 공식에 대입하라.
                 (예시: cartoon cat surfing, wearing a bucket hat, winking)
                 """
