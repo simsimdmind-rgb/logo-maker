@@ -125,18 +125,18 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
             {instructions}
             
             [출력 규칙]
-            1. 결과물은 오직 '/imagine prompt: '로 시작하는 영어 명령어 한 줄만 출력한다.
+            1. 결과물은 오직 영어 명령어 한 줄만 출력한다.
             2. 설명이나 잡담은 절대 하지 않는다.
             """
             
-            with st.spinner("AI가 필승 공식을 적용 중입니다..."):
+            with st.spinner("AI가 최적의 프롬프트를 설계 중입니다..."):
                 response = model.generate_content(system_prompt)
                 final_prompt = response.text
                 
                 # 후처리 (혹시 모를 잡다한 텍스트 제거)
                 final_prompt = final_prompt.replace("`", "").strip()
                 if not final_prompt.startswith("/imagine prompt:"):
-                     final_prompt = "/imagine prompt: " + final_prompt
+                     final_prompt = final_prompt
 
             # 6. 결과 출력
             st.success("🎉 생성 완료! 아래 코드를 복사해서 사용하세요.")
