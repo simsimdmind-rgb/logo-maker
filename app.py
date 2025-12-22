@@ -77,7 +77,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
             
             if style_key == "심플/미니멀 심볼 (아이콘, 기하학)":
                 instructions = f"""
-                [공식]: flat vector logo, minimalist, pictograph, Paul Rand style, negative space, geometric, less is more, iconic, [Subject described in user input], {base_keywords} {base_negative} --v 6.0
+                [공식]: flat vector logo, minimalist, pictograph, Paul Rand style, negative space, geometric, less is more, iconic, [Subject described in user input], {base_keywords} {base_negative}
                 [미션]: 사용자의 입력을 분석해 [Subject] 부분을 영어로 채워넣어라.
                 """
             
@@ -89,28 +89,28 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
 
             elif style_key == "문구 조합형 (알파벳+그림 결합)":
                 instructions = f"""
-                [공식]: vector logo for [Industry] where the letter [Letter] is [Description], black and white, minimalist, modern, not cartoonish, white background --no realistic, shading, gradient --v 6.0
+                [공식]: vector logo for [Industry] where the letter [Letter] is [Description], black and white, minimalist, modern, not cartoonish, white background --no realistic, shading, gradient
                 [미션]: 사용자의 입력에서 업종(Industry), 알파벳(Letter), 묘사(Description)를 추출해 영어로 번역하고 공식에 대입하라.
                 (예시: logo for bookstore where the letter B is a book viewed from the side)
                 """
 
             elif style_key == "캐릭터/마스코트 (레트로 라인아트)":
                 instructions = f"""
-                [공식]: Minimal retro mascot logo of cartoon [Subject] [Action], [Props/Details], [Expression]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography --v 6.0
+                [공식]: Minimal retro mascot logo of cartoon [Subject] [Action], [Props/Details], [Expression]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography
                 [미션]: 사용자의 입력에서 대상(Subject), 동작(Action), 소품(Props), 표정(Expression)을 추출해 영어로 번역하고 공식에 대입하라.
                 (예시: cartoon cat surfing, wearing a bucket hat, winking)
                 """
 
             elif style_key == "텍스트 형태 (이니셜 강조)":
                 instructions = f"""
-                [공식]: modern and simple logo design, [Character], letter [Character], one color, vector, white background {base_negative} --v 6.0
+                [공식]: modern and simple logo design, [Character], letter [Character], one color, vector, white background {base_negative}
                 [미션]: 사용자의 입력에서 제작할 문자(Character)를 찾아 영어 대문자로 공식에 대입하라.
                 (예시: modern and simple logo design, M, letter M, one color, vector)
                 """
             
             elif style_key == "테크/퓨처리스틱 (IT, 네온)":
                 instructions = f"""
-                [공식]: tech logo, futuristic, gradient, app icon, neon glow, cyber style, connected nodes, data flow, modern, [Subject described in user input], white background --no realistic, text, shadow --v 6.0
+                [공식]: tech logo, futuristic, gradient, app icon, neon glow, cyber style, connected nodes, data flow, modern, [Subject described in user input], white background --no realistic, text, shadow
                 [미션]: 사용자의 입력을 분석해 [Subject]를 영어로 추가하고 공식에 맞춰 완성하라. 테크 느낌을 살려라.
                 """
 
