@@ -82,63 +82,41 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
             # [핵심] 대표님의 프롬프트 공식 (System Prompt 설계)
             # ---------------------------------------------------------
             
-            base_keywords = "vector graphic, simple, minimal, white background"
-            base_negative = "--no realistic, shadow, shading, gradient, text"
-            instructions = ""
-            
-            if style_key == "심플/미니멀 심볼 (아이콘, 기하학)":
-                instructions = f"""
-                [공식]: flat vector logo, minimalist, pictograph, Paul Rand style, negative space, geometric, less is more, iconic, [Subject described in user input], {base_keywords} {base_negative}
-                [미션]: 사용자의 입력을 분석해 [Subject] 부분을 영어로 채워넣어라.
-                """
-            
-            elif style_key == "미니멀 라인 (선으로 그린 느낌)":
-                instructions = f"""
-                [공식]: minimal line logo of a [Subject], vector, {base_keywords} {base_negative} --v 6.0
-                [미션]: 사용자의 입력에서 핵심 대상(Subject)을 추출하여 영어로 번역하고 공식에 대입하라. (예: rose, horse)
-                """
+base_keywords = "vector graphic, simple, minimal, white background"
+    base_negative = "--no realistic, shadow, shading, gradient, text"
+    formula = ""
 
-            elif style_key == "문구 조합형 (알파벳+그림 결합)":
-                instructions = f"""
-                [공식]: vector logo for [Industry] where the letter [Letter] is [Description], black and white, minimalist, modern, not cartoonish, white background --no realistic, shading, gradient
-                [미션]: 사용자의 입력에서 업종(Industry), 알파벳(Letter), 묘사(Description)를 추출해 영어로 번역하고 공식에 대입하라.
-                (예시: logo for bookstore where the letter B is a book viewed from the side)
-                """
+    if style_key == "심플/미니멀 심볼 (아이콘)":
+        formula = f"flat vector logo, minimalist, pictograph, Paul Rand style, negative space, geometric, less is more, iconic, [SUBJECT], {base_keywords} {base_negative}"
 
-            elif style_key == "캐릭터/마스코트 (레트로 라인아트)":
-                instructions = f"""
-                [공식]: Minimal retro mascot logo of cartoon [Subject] [Action], [Props/Details], [Expression]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography
-                [미션]: 사용자의 입력에서 대상(Subject), 동작(Action), 소품(Props), 표정(Expression)을 추출해 영어로 번역하고 공식에 대입하라.
-                (예시: cartoon cat surfing, wearing a bucket hat, winking)
-                """
+    elif style_key == "미니멀 라인 (선으로 그린 느낌)":
+        formula = f"minimal line logo of a [SUBJECT], vector, {base_keywords} {base_negative} --v 6.0"
 
-            elif style_key == "텍스트 형태 (이니셜 강조)":
-                instructions = f"""
-                [공식]: modern and simple logo design, [Character], letter [Character], one color, vector, white background {base_negative}
-                [미션]: 사용자의 입력에서 제작할 문자(Character)를 찾아 영어 대문자로 공식에 대입하라.
-                (예시: modern and simple logo design, M, letter M, one color, vector)
-                """
-            
-            elif style_key == "테크/퓨처리스틱 (IT, 네온)":
-                instructions = f"""
-                [공식]: tech logo, futuristic, gradient, app icon, neon glow, cyber style, connected nodes, data flow, modern, [Subject described in user input], white background --no realistic, text, shadow
-                [미션]: 사용자의 입력을 분석해 [Subject]를 영어로 추가하고 공식에 맞춰 완성하라. 테크 느낌을 살려라.
-                """
+    elif style_key == "문구 조합형 (알파벳+그림 결합)":
+        formula = f"vector logo for [INDUSTRY] where the letter [LETTER] is [DESCRIPTION], black and white, minimalist, modern, not cartoonish, white background --no realistic, shading, gradient"
+
+    elif style_key == "캐릭터/마스코트 (레트로)":
+        formula = f"Minimal retro mascot logo of cartoon [SUBJECT] [ACTION], [PROPS], [EXPRESSION]. Simple clean black outlines only, flat line art style, no shading, no halftone, white background, no text or typography"
+
+    elif style_key == "텍스트 형태 (이니셜 강조)":
+        formula = f"modern and simple logo design, [LETTER], letter [LETTER], one color, vector, white background {base_negative}"
+
+    elif style_key == "테크/퓨처리스틱 (IT, 네온)":
+        formula = f"tech logo, futuristic, gradient, app icon, neon glow, cyber style, connected nodes, data flow, modern, [SUBJECT], white background --no realistic, text, shadow"
 
             # 최종 시스템 프롬프트 조합
-            system_prompt = f"""
-            너는 미드저니(Midjourney) 프롬프트 작성 로봇이다.
-            사용자의 [의뢰 내용]을 분석하여, 아래 [스타일 지침]에 따라 빈칸을 채워 완벽한 프롬프트 명령어를 출력하라.
-            
-            [사용자 의뢰 내용]: {user_input}
-            
-            [스타일 지침]:
-            {instructions}
-            
-            [출력 규칙]
-            1. 결과물은 오직 영어 명령어 한 줄만 출력한다.
-            2. 설명이나 잡담은 절대 하지 않는다.
-            """
+system_prompt = f"""
+너는 미드저니 전문 프롬프트 엔지니어다.
+사용자의 [의뢰 내용]을 분석해서 아래의 [제공된 공식]에 맞춰서 영어 프롬프트 한 줄만 만들어라.
+
+[의뢰 내용]: {user_input}
+[제공된 공식]: {formula}
+
+[작성 규칙]:
+1. [ ]로 표시된 대괄호 부분을 사용자의 의뢰 내용에 맞게 영어로 번역해서 채워 넣어라.
+2. 공식에 있는 단어들은 하나도 빠뜨리지 말고 그대로 유지하라.
+3. 출력은 반드시 영어로 된 프롬프트 한 줄만 하며, 설명이나 인사말은 절대 하지 마라.
+"""
             
             with st.spinner("AI가 최적의 프롬프트를 설계 중입니다..."):
                 response = model.generate_content(system_prompt)
