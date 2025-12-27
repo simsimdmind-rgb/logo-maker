@@ -67,7 +67,7 @@ if st.button("✨ 프롬프트 생성하기", type="primary", use_container_widt
         try:
             # API 설정
             genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-            model = genai.GenerativeModel('gemini-2.0-flash') # 모델명 확인 필요 (현재 2.0이 최신)
+            model = genai.GenerativeModel('gemini-2.5-flash') # 모델명 확인 필요 (현재 2.0이 최신)
             
             # ---------------------------------------------------------
             # 스타일별 공식 정의 (들여쓰기 수정 완료)
